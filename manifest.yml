@@ -1,0 +1,23 @@
+---
+applications:
+  - name: opensap-approuter
+    host: opensap123456-approuter
+    path: web
+    memory: 128M
+    env:
+      TENANT_HOST_PATTERN: "^(.*)-opensap123456-approuter.cfapps.eu10.hana.ondemand.com"
+      destinations: >
+        [
+          {"name":"secdemo", "url":"https://opensap-secdemo-123456.cfapps.eu10.hana.ondemand.com", "forwardAuthToken": true }
+        ]
+    services:
+      - java-uaa
+
+  - name: opensap-secdemo
+    host: opensap-secdemo-123456
+    path: target/CFSecTest.war
+    memory: 512M
+    env:
+      SAP_JWT_TRUST_ACL: '[{"clientid" : "*", "identityzone" : "*"}]'
+    services:
+      - java-uaa

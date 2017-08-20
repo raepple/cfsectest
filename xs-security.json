@@ -1,0 +1,35 @@
+{
+    "xsappname"     : "opensap-approuter",
+    "tenant-mode"   : "shared",
+    "scopes"        : [
+                        {
+                          "name"                 : "$XSAPPNAME.Display",
+                           "description"         : "display"
+                        },
+                        {
+                          "name"                 : "$XSAPPNAME.Create",
+                          "description"          : "create"
+                        },
+                        {
+                          "name"                 : "$XSAPPNAME.Delete",
+                          "description"          : "delete"
+                        }
+                      ],                      
+    "role-templates": [
+                        {
+                          "name"                 : "RT_Manage",
+                          "description"          : "Manage things",
+                          "scope-references"     : [
+                                                     "$XSAPPNAME.Create", "$XSAPPNAME.Delete" 
+                                                   ]                                            
+                        },
+                        {
+                          "name"                 : "RT_Display",
+                          "description"          : "View things",
+                          "scope-references"     : [
+                                                     "$XSAPPNAME.Display"
+                                                   ]                                           
+                        }                                     
+                        
+                      ]
+}

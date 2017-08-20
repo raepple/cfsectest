@@ -1,0 +1,26 @@
+{
+	"welcomeFile": "index.html",
+	"logout": {
+		"logoutEndpoint": "/do/logout"
+	},
+	"authenticationMethod":"route",
+	"routes": [
+	{
+		"source": "^/DisplayServlet",
+		"destination": "secdemo",
+		"target": "/DisplayServlet",	
+		"authenticationType": "xsuaa"
+	},
+	{
+		"source": "^/ManageServlet",
+		"destination": "secdemo",
+		"target": "/ManageServlet",
+		"scope": "$XSAPPNAME.Create",
+		"authenticationType": "xsuaa"
+	}, 
+    {
+		"source": "^/(.*)",
+		"localDir": "resources",
+		"authenticationType": "xsuaa"
+	}]
+}
